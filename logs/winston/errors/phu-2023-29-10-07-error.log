@@ -1,0 +1,3 @@
+Sun Oct 29 2023 7:37:39 } [PH] error: Failed to connect database bad auth : authentication failed
+Sun Oct 29 2023 7:38:42 } [PH] error: Failed to connect database bad auth : authentication failed
+Sun Oct 29 2023 7:40:36 } [PH] error: listen EACCES: permission denied 5000,

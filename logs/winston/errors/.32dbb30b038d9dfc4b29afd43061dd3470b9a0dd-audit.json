@@ -1,0 +1,85 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\.32dbb30b038d9dfc4b29afd43061dd3470b9a0dd-audit.json",
+    "files": [
+        {
+            "date": 1700023976143,
+            "name": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\phu-2023-15-11-10-error.log",
+            "hash": "098c2cdb950e15b8914fbb0b18821d2e042594f169d93cf0a3eb9e2539c7a9aa"
+        },
+        {
+            "date": 1700201187581,
+            "name": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\phu-2023-17-11-12-error.log",
+            "hash": "d939d01f4a470916b70918431ead439cc2a1418d1925ee4a19ad96e528d4f020"
+        },
+        {
+            "date": 1700248920209,
+            "name": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\phu-2023-18-11-01-error.log",
+            "hash": "2a0ca5c7a80e72367ba2219406db315ed20636a44576f4e12db83ba3604d5be8"
+        },
+        {
+            "date": 1700251263644,
+            "name": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\phu-2023-18-11-02-error.log",
+            "hash": "cf06e114af1b9dd7aa0121cc8b1d1123fa26b3d5cec0080e61d1532f2fbd9c3a"
+        },
+        {
+            "date": 1700275236905,
+            "name": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\phu-2023-18-11-08-error.log",
+            "hash": "04f43e1b486b9a688a46d80ee5075b43e8a758bcddf9134669c46286a49fac88"
+        },
+        {
+            "date": 1700277006273,
+            "name": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\phu-2023-18-11-09-error.log",
+            "hash": "74b927de8c7e40816b3e65bbf5fc4d2b7bb206818662743318cb7fdebc44f64f"
+        },
+        {
+            "date": 1700281604894,
+            "name": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\phu-2023-18-11-10-error.log",
+            "hash": "e3c3de59938c9afea8727074f400d2b58cb445d68ab405a5c6a9246d8ee835c9"
+        },
+        {
+            "date": 1700288769432,
+            "name": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\phu-2023-18-11-12-error.log",
+            "hash": "9c124310a1662cf1ef44501b368cd0f575d28581d27f2082aedd87693e6f4186"
+        },
+        {
+            "date": 1700291348550,
+            "name": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\phu-2023-18-11-13-error.log",
+            "hash": "ff8acc333a6bd08a38eeeea79b3f1351114d9aa747a0655bef43504992ad4033"
+        },
+        {
+            "date": 1700310463896,
+            "name": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\phu-2023-18-11-18-error.log",
+            "hash": "25d8a39cdc038353099840b2b4c66e5aa6be9996c369d79120d4e6e2659ad17e"
+        },
+        {
+            "date": 1700312871014,
+            "name": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\phu-2023-18-11-19-error.log",
+            "hash": "40de13daff4ab08f90fcbee0477485e4eb9ad867bb7e77977d399994491eebba"
+        },
+        {
+            "date": 1700316026168,
+            "name": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\phu-2023-18-11-20-error.log",
+            "hash": "9a7d0f92a72000d4bae219f31c34e5e3d132b7305267c23d268372653d5dadd3"
+        },
+        {
+            "date": 1700381173634,
+            "name": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\phu-2023-19-11-14-error.log",
+            "hash": "d1ed5ce61e03e38f00a2635300ea3367541b3171f54ba00999750458170d3642"
+        },
+        {
+            "date": 1700384461580,
+            "name": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\phu-2023-19-11-15-error.log",
+            "hash": "ea0e3d5e6aaf0d160557fe0b19f3f2e18cec914769a50e422e8f5393f272a1e6"
+        },
+        {
+            "date": 1700409964571,
+            "name": "D:\\next_level_programming\\assignment\\assignmetn-3\\logs\\winston\\errors\\phu-2023-19-11-22-error.log",
+            "hash": "f4c69c78b280fc740444ec66215253d91b8697503af3be7c4bc7672712cade08"
+        }
+    ],
+    "hashType": "sha256"
+}
