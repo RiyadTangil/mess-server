@@ -10,6 +10,8 @@ import sendResponse from '../../../shared/sendResponse';
 
 import config from '../../../config';
 import { ILoginUserResponse } from '../auth/auth.interface';
+import httpStatus from 'http-status';
+import { IMess } from './mess..interface';
 const createMess: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { ...messData } = req.body;
@@ -55,18 +57,18 @@ const createMess: RequestHandler = catchAsync(
 //   });
 // });
 
-// const getSingleCow = catchAsync(async (req: Request, res: Response) => {
-//   const id = req.params.id;
+const getSingleMess = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
 
-//   const result = await CowService.getSingleCow(id);
+  const result = await MessService.getSingleMess(id);
 
-//   sendResponse<ICow>(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: 'Cow retrieved successfully !',
-//     data: result,
-//   });
-// });
+  sendResponse<IMess>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Mess retrieved successfully !',
+    data: result,
+  });
+});
 
 // const updateCow = catchAsync(async (req: Request, res: Response) => {
 //   const id = req.params.id;
@@ -97,7 +99,7 @@ const createMess: RequestHandler = catchAsync(
 export const MessController = {
   createMess,
   // getAllCows,
-  // getSingleCow,
+  getSingleMess,
   // updateCow,
   // deleteCow,
 };

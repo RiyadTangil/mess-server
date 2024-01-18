@@ -13,7 +13,6 @@ export type IUser = {
   password: string;
   name: string;
   number: string;
-  needsPasswordChange: boolean;
   passwordChangedAt?: Date;
   mess_id?: Types.ObjectId | IMess;
   // faculty?: Types.ObjectId | IFaculty;

@@ -13,11 +13,7 @@ router.post(
   validateRequest(MessValidation.createMessZodSchema),
   MessController.createMess
 );
-// router.get(
-//   '/:id',
-//   auth(ENUM_USER_ROLE.SELLER, ENUM_USER_ROLE.ADMIN),
-//   CowController.getSingleCow
-// );
+router.get('/:id', MessController.getSingleMess);
 // router.get(
 //   '/',
 //   auth(ENUM_USER_ROLE.SELLER, ENUM_USER_ROLE.ADMIN),

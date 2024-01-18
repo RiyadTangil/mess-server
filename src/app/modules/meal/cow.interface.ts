@@ -24,16 +24,32 @@ export type LocalGuardian = {
   address: string;
 };
 
-export type IMess = {
+export type ICow = {
   name: string;
-  number: string;
-  password: string;
-  users: Array<Types.ObjectId | IUser>;
-  admin: Types.ObjectId | IUser; // reference _id
+  age: number;
+  price: number;
+  weight: number;
+  location?: string;
+  breed?: string;
+  label?: string;
+  category?: string;
+  seller: Types.ObjectId | IUser; // reference _id
 };
 
-export type MessModel = Model<IMess, Record<string, unknown>>;
+export type CowModel = Model<ICow, Record<string, unknown>>;
+export type IChoice = {
+  breakfast: number;
+  lunch: number;
+  dinner: number;
+};
 
+export type IMealChoice = {
+  choices: IChoice;
+  date: string;
+  mess: Types.ObjectId;
+  user: Types.ObjectId;
+  newChoice: IChoice;
+};
 export type ICowFilters = {
   searchTerm?: string;
   location?: string;

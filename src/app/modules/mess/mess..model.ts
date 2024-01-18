@@ -13,6 +13,12 @@ export const MessSchema = new Schema<IMess, MessModel>(
       ref: 'User',
       required: true,
     },
+    users: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
   },
   {
     timestamps: true,

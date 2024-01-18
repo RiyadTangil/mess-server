@@ -165,11 +165,13 @@ const createMess = async (
 //   };
 // };
 
-// const getSingleCow = async (id: string): Promise<ICow | null> => {
-//   const result = await Mess.findOne({ _id: id }).populate('seller');
+const getSingleMess = async (id: string): Promise<IMess | null> => {
+  const result = await Mess.findOne({ _id: id }).populate({
+    path: 'users',
+  });
 
-//   return result;
-// };
+  return result;
+};
 
 // const updateCow = async (
 //   id: string,
@@ -208,7 +210,7 @@ const createMess = async (
 export const MessService = {
   createMess,
   // getAllCows,
-  // getSingleCow,
+  getSingleMess,
   // updateCow,
   // deleteCow,
 };

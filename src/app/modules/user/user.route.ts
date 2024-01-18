@@ -8,9 +8,9 @@ const router = express.Router();
 const authRouter = express.Router();
 const basicRouter = express.Router();
 
-authRouter.post(
+router.post(
   '/signup',
-  auth(ENUM_USER_ROLE.ADMIN),
+
   validateRequest(UserValidation.createUserZodSchema),
   UserController.createUser
 );
@@ -19,11 +19,11 @@ router.get('/:id', auth(ENUM_USER_ROLE.ADMIN), UserController.getSingleUser);
 basicRouter.get('/', UserController.initialRoute);
 router.get('/', auth(ENUM_USER_ROLE.ADMIN), UserController.getAllUsers);
 
-router.delete('/:id', auth(ENUM_USER_ROLE.ADMIN), UserController.deleteUser);
+router.delete('/:id', UserController.deleteUser);
 
 router.patch(
   '/:id',
-  auth(ENUM_USER_ROLE.ADMIN),
+
   validateRequest(UserValidation.createUserZodSchema),
   UserController.updateUser
 );
