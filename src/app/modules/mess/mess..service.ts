@@ -54,6 +54,7 @@ const createMess = async (
     const messInfo = {
       name,
       admin: createdUser._id,
+      users: [createdUser._id],
     };
     const createdMessAccount = await Mess.create(messInfo);
 

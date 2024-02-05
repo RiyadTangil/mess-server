@@ -2,10 +2,7 @@
 import { Types } from 'mongoose';
 import { Model } from 'mongoose';
 import { IMess } from '../mess/mess..interface';
-type UserName = {
-  firstName: string;
-  lastName: string;
-};
+import { IMealChoice } from '../meal/meal.interface';
 
 export type IUser = {
   id: string;
@@ -14,6 +11,7 @@ export type IUser = {
   name: string;
   number: string;
   passwordChangedAt?: Date;
+  meals: Types.ObjectId[] | IMealChoice[];
   mess_id?: Types.ObjectId | IMess;
   // faculty?: Types.ObjectId | IFaculty;
   // admin?: Types.ObjectId | IAdmin;

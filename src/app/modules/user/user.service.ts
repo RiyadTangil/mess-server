@@ -76,25 +76,6 @@ const updateUser = async (
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found !');
   }
 
-//   const { name, ...userData } = payload;
-
-//   const updatedStudentData: Partial<IUser> = { ...userData };
-
-//   /* const name ={
-//     fisrtName: 'Mezba',  <----- update korar jnno
-//     middleName:'Abedin',
-//     lastName: 'Forhan'
-//   }
-// */
-
-//   // dynamically handling
-
-//   if (name && Object.keys(name).length > 0) {
-//     Object.keys(name).forEach(key => {
-//       const nameKey = `name.${key}` as keyof Partial<IUser>; // `name.fisrtName`
-//       (updatedStudentData as any)[nameKey] = name[key as keyof typeof name];
-//     });
-//   }
 
   const result = await User.findOneAndUpdate({ _id: id }, payload, {
     new: true,

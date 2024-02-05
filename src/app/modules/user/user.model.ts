@@ -30,6 +30,12 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: true,
     },
+    meals: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'MealChoice',
+      },
+    ],
   },
   {
     timestamps: true,
