@@ -9,7 +9,9 @@ const validateRequest_1 = __importDefault(require("../../middlewares/validateReq
 // import { UserController } from './user.controller';
 const order_controller_1 = require("./order.controller");
 const order_validation_1 = require("./order.validation");
+const user_1 = require("../../../enums/user");
+const auth_1 = __importDefault(require("../../middlewares/auth"));
 const router = express_1.default.Router();
-router.post('/', (0, validateRequest_1.default)(order_validation_1.OrderValidation.OrderZodSchema), order_controller_1.OrderController.createOrder);
-router.get('/', order_controller_1.OrderController.getAllOrders);
+router.post('/', (0, auth_1.default)(user_1.ENUM_USER_ROLE.BUYER), (0, validateRequest_1.default)(order_validation_1.OrderValidation.OrderZodSchema), order_controller_1.OrderController.createOrder);
+router.get('/', (0, auth_1.default)(user_1.ENUM_USER_ROLE.ADMIN), order_controller_1.OrderController.getAllOrders);
 exports.OrderRoutes = router;

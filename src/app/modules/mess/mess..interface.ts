@@ -28,6 +28,7 @@ export type IMess = {
   name: string;
   number: string;
   password: string;
+  id: string;
   users: Array<Types.ObjectId | IUser>;
   admin: Types.ObjectId | IUser; // reference _id
 };

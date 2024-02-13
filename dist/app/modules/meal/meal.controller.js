@@ -23,74 +23,78 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserController = void 0;
+exports.MealController = void 0;
 const http_status_1 = __importDefault(require("http-status"));
 const catchAsync_1 = __importDefault(require("../../../shared/catchAsync"));
 const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
-const user_service_1 = require("./user.service");
-const createUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const userData = __rest(req.body, []);
-    const result = yield user_service_1.UserService.createUser(userData);
+const meal_service_1 = require("./meal.service");
+const createMeal = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const MealData = __rest(req.body, []);
+    const result = yield meal_service_1.MealService.createMeal(MealData);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'user created successfully!',
+        message: 'Meals created successfully!',
         data: result,
     });
 }));
-const initialRoute = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getMealsByMessIdAndDate = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const { date } = req.query;
+    const result = yield meal_service_1.MealService.getMealsByMessIdAndDate(id, date);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'user created successfully!',
-        data: 'Server is running',
+        message: 'Meals retrieved successfully !',
+        data: result,
     });
 }));
-const getAllUsers = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield user_service_1.UserService.getAllUsers();
+const getMealsByMessId = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const result = yield meal_service_1.MealService.getMealsByMessId(id);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'Users retrieved successfully !',
-        data: result.data,
+        message: 'Meals retrieved successfully !',
+        data: result,
     });
 }));
-const getSingleUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getMealsByUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id = req.params.id;
-    const result = yield user_service_1.UserService.getSingleUser(id);
+    const result = yield meal_service_1.MealService.getMealsByUser(id);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'User retrieved successfully !',
+        message: 'Meals retrieved successfully !',
         data: result,
     });
 }));
-const updateUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const updateMeal = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id = req.params.id;
     const updatedData = req.body;
-    const result = yield user_service_1.UserService.updateUser(id, updatedData);
+    const result = yield meal_service_1.MealService.updateMeal(id, updatedData);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'User updated successfully !',
+        message: 'Meals updated successfully !',
         data: result,
     });
 }));
-const deleteUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const id = req.params.id;
-    const result = yield user_service_1.UserService.deleteUser(id);
-    (0, sendResponse_1.default)(res, {
-        statusCode: http_status_1.default.OK,
-        success: true,
-        message: 'User deleted successfully !',
-        data: result,
-    });
-}));
-exports.UserController = {
-    createUser,
-    getAllUsers,
-    getSingleUser,
-    initialRoute,
-    updateUser,
-    deleteUser,
+// const deleteMeal = catchAsync(async (req: Request, res: Response) => {
+//   const id = req.params.id;
+//   const result = await MealService.deleteMeal(id);
+//   sendResponse<IMealChoice>(res, {
+//     statusCode: httpStatus.OK,
+//     success: true,
+//     message: 'Meals deleted successfully !',
+//     data: result,
+//   });
+// });
+exports.MealController = {
+    createMeal,
+    getMealsByMessId,
+    getMealsByMessIdAndDate,
+    getMealsByUser,
+    updateMeal,
+    // deleteMeal,
 };

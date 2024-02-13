@@ -17,7 +17,7 @@ const createMess: RequestHandler = catchAsync(
     const { ...messData } = req.body;
 
     const result = await MessService.createMess(messData);
-    const { refreshToken } = result;
+    // const { refreshToken } = result;
 
     // set refresh token into cookie
     const cookieOptions = {

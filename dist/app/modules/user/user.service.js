@@ -8,17 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -26,14 +15,34 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
 const http_status_1 = __importDefault(require("http-status"));
 const ApiError_1 = __importDefault(require("../../../errors/ApiError"));
+const bcrypt_1 = __importDefault(require("bcrypt"));
 const user_model_1 = require("./user.model");
+const mess__model_1 = require("../mess/mess..model");
+const mongoose_1 = require("mongoose");
+const config_1 = __importDefault(require("../../../config"));
 const createUser = (user) => __awaiter(void 0, void 0, void 0, function* () {
-    // create user
-    const newUser = yield user_model_1.User.create(user);
-    if (!newUser) {
-        throw new ApiError_1.default(http_status_1.default.BAD_REQUEST, 'Failed to create student');
+    const session = yield (0, mongoose_1.startSession)();
+    try {
+        session.startTransaction();
+        const newHashedPassword = yield bcrypt_1.default.hash(user.password, Number(config_1.default.bycrypt_salt_rounds));
+        user.password = newHashedPassword;
+        // Create the user within the transaction
+        const newUser = yield user_model_1.User.create([user], { session });
+        if (!newUser) {
+            throw new ApiError_1.default(http_status_1.default.BAD_REQUEST, 'Failed to create user');
+        }
+        // Update the Mess model to include the created user's _id in the users array
+        yield mess__model_1.Mess.findByIdAndUpdate(user.mess_id, { $push: { users: newUser[0]._id } }, { session });
+        yield session.commitTransaction();
+        session.endSession();
+        return newUser[0];
     }
-    return newUser;
+    catch (error) {
+        yield session.abortTransaction();
+        session.endSession();
+        // Handle errors appropriately
+        throw new ApiError_1.default(http_status_1.default.INTERNAL_SERVER_ERROR, 'Internal Server Error');
+    }
 });
 const getAllUsers = () => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield user_model_1.User.find({});
@@ -55,22 +64,7 @@ const updateUser = (id, payload) => __awaiter(void 0, void 0, void 0, function* 
     if (!isExist) {
         throw new ApiError_1.default(http_status_1.default.NOT_FOUND, 'User not found !');
     }
-    const { name } = payload, userData = __rest(payload, ["name"]);
-    const updatedStudentData = Object.assign({}, userData);
-    /* const name ={
-      fisrtName: 'Mezba',  <----- update korar jnno
-      middleName:'Abedin',
-      lastName: 'Forhan'
-    }
-  */
-    // dynamically handling
-    if (name && Object.keys(name).length > 0) {
-        Object.keys(name).forEach(key => {
-            const nameKey = `name.${key}`; // `name.fisrtName`
-            updatedStudentData[nameKey] = name[key];
-        });
-    }
-    const result = yield user_model_1.User.findOneAndUpdate({ _id: id }, updatedStudentData, {
+    const result = yield user_model_1.User.findOneAndUpdate({ _id: id }, payload, {
         new: true,
     });
     return result;
