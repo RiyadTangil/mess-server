@@ -12,7 +12,8 @@ router.post(
 );
 router.patch('/:id', MealController.updateMeal);
 router.get('/:id', MealController.getMealsByUser);
-router.get('/getMealsByMessId/:id', MealController.getSingleMealByMessId);
+router.get('/getMealsByMessId/:id', MealController.getMealsByMessId);
+router.get('/getMealsByMessIdAndDate/:id', MealController.getMealsByMessIdAndDate);
 
 // router.delete('/:id', auth(ENUM_USER_ROLE.SELLER), MealController.deleteCow);
 

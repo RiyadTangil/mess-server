@@ -12,6 +12,8 @@ export type IUser = {
   number: string;
   passwordChangedAt?: Date;
   meals: Types.ObjectId[] | IMealChoice[];
+  deposit: { amount: number; date: string }[];
+  withdraw: { amount: number; date: string }[];
   mess_id?: Types.ObjectId | IMess;
   // faculty?: Types.ObjectId | IFaculty;
   // admin?: Types.ObjectId | IAdmin;

@@ -17,13 +17,12 @@ router.post(
 
 router.get('/:id', auth(ENUM_USER_ROLE.ADMIN), UserController.getSingleUser);
 basicRouter.get('/', UserController.initialRoute);
-router.get('/', auth(ENUM_USER_ROLE.ADMIN), UserController.getAllUsers);
+router.get('/', UserController.getAllUsers);
 
 router.delete('/:id', UserController.deleteUser);
 
 router.patch(
   '/:id',
-
   validateRequest(UserValidation.createUserZodSchema),
   UserController.updateUser
 );

@@ -1,6 +1,19 @@
 import { Schema, model } from 'mongoose';
 import { IUser, UserModel } from './user.interface';
 import bcrypt from 'bcrypt';
+
+const depositWithdrawSchema = new Schema({
+  amount: {
+    type: Number,
+    required: false,
+  },
+  date: {
+    type: String,
+    required: false,
+  },
+});
+
+
 const userSchema = new Schema<IUser>(
   {
     // id: {
@@ -36,6 +49,14 @@ const userSchema = new Schema<IUser>(
         ref: 'MealChoice',
       },
     ],
+    deposit: {
+      type: [depositWithdrawSchema],
+      required: false,
+    },
+    withdraw: {
+      type: [depositWithdrawSchema],
+      required: false,
+    },
   },
   {
     timestamps: true,

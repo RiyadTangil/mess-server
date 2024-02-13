@@ -21,10 +21,24 @@ const createMeal: RequestHandler = catchAsync(
 );
 
 
-const getSingleMealByMessId = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id;
+const getMealsByMessIdAndDate = catchAsync(async (req: Request, res: Response) => {
+  
+  const { id } = req.params;
+  const { date } = req.query;
 
-  const result = await MealService.getSingleMealByMessId(id);
+  const result = await MealService.getMealsByMessIdAndDate(id,date);
+
+  sendResponse<IMess>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Meals retrieved successfully !',
+    data: result,
+  });
+});
+const getMealsByMessId = catchAsync(async (req: Request, res: Response) => {
+  
+  const { id } = req.params;
+  const result = await MealService.getMealsByMessId(id);
 
   sendResponse<IMess>(res, {
     statusCode: httpStatus.OK,
@@ -59,23 +73,24 @@ const updateMeal = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
-const deleteMeal = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id;
+// const deleteMeal = catchAsync(async (req: Request, res: Response) => {
+//   const id = req.params.id;
 
-  const result = await MealService.deleteMeal(id);
+//   const result = await MealService.deleteMeal(id);
 
-  sendResponse<IMealChoice>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Meals deleted successfully !',
-    data: result,
-  });
-});
+//   sendResponse<IMealChoice>(res, {
+//     statusCode: httpStatus.OK,
+//     success: true,
+//     message: 'Meals deleted successfully !',
+//     data: result,
+//   });
+// });
 
 export const MealController = {
   createMeal,
-  getSingleMealByMessId,
+  getMealsByMessId,
+  getMealsByMessIdAndDate,
   getMealsByUser,
   updateMeal,
-  deleteMeal,
+  // deleteMeal,
 };
