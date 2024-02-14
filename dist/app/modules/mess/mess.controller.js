@@ -32,16 +32,15 @@ const catchAsync_1 = __importDefault(require("../../../shared/catchAsync"));
 const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
 // import { cowFilterableFields } from './mess..constant';
 // import { IMess } from './mess..interface';
-const config_1 = __importDefault(require("../../../config"));
 const http_status_1 = __importDefault(require("http-status"));
 const createMess = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const messData = __rest(req.body, []);
     const result = yield mess__service_1.MessService.createMess(messData);
-    const { refreshToken } = result;
+    // const { refreshToken } = result;
     // set refresh token into cookie
     const cookieOptions = {
-        secure: config_1.default.env === 'production',
-        httpOnly: true,
+        secure: false,
+        httpOnly: false,
     };
     res.cookie('refreshToken', result === null || result === void 0 ? void 0 : result.refreshToken, cookieOptions);
     (0, sendResponse_1.default)(res, {

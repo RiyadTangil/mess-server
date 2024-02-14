@@ -1,5 +1,5 @@
-import { MessService } from './mess..service';
 import { Request, RequestHandler, Response } from 'express';
+import { MessService } from './mess..service';
 // import httpStatus from 'http-status';
 // import { paginationFields } from '../../../constants/pagination';
 import catchAsync from '../../../shared/catchAsync';
@@ -8,9 +8,9 @@ import sendResponse from '../../../shared/sendResponse';
 // import { cowFilterableFields } from './mess..constant';
 // import { IMess } from './mess..interface';
 
+import httpStatus from 'http-status';
 import config from '../../../config';
 import { ILoginUserResponse } from '../auth/auth.interface';
-import httpStatus from 'http-status';
 import { IMess } from './mess..interface';
 const createMess: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
@@ -21,8 +21,8 @@ const createMess: RequestHandler = catchAsync(
 
     // set refresh token into cookie
     const cookieOptions = {
-      secure: config.env === 'production',
-      httpOnly: true,
+      secure: false,
+      httpOnly: false,
     };
 
     res.cookie('refreshToken', result?.refreshToken, cookieOptions);

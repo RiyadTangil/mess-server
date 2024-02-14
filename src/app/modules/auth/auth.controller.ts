@@ -12,7 +12,7 @@ const loginUser = catchAsync(async (req: Request, res: Response) => {
   // set refresh token into cookie
   const cookieOptions = {
     secure: config.env === 'production',
-    httpOnly: true,
+    httpOnly: false,
   };
 
   res.cookie('refreshToken', refreshToken, cookieOptions);
@@ -31,7 +31,7 @@ const createMessAccount = catchAsync(async (req: Request, res: Response) => {
   // set refresh token into cookie
   const cookieOptions = {
     secure: config.env === 'production',
-    httpOnly: true,
+    httpOnly: false,
   };
 
   res.cookie('refreshToken', refreshToken, cookieOptions);
@@ -52,7 +52,7 @@ const refreshToken = catchAsync(async (req: Request, res: Response) => {
   // set refresh token into cookie
   const cookieOptions = {
     secure: config.env === 'production',
-    httpOnly: true,
+    httpOnly: false,
   };
 
   res.cookie('refreshToken', refreshToken, cookieOptions);

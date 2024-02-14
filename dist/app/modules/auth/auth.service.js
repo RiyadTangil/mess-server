@@ -41,7 +41,6 @@ const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     }
     //create access token & refresh token
     const { _id, role, mess_id, name } = isUserExist;
-    console.log("isUserExist=> ", isUserExist);
     const data = { userId: _id, role, mess_id: mess_id === null || mess_id === void 0 ? void 0 : mess_id.id, name };
     const accessToken = jwtHelpers_1.jwtHelpers.createToken(data, config_1.default.jwt.secret, config_1.default.jwt.expires_in);
     const refreshToken = jwtHelpers_1.jwtHelpers.createToken(data, config_1.default.jwt.refresh_secret, config_1.default.jwt.refresh_expires_in);

@@ -35,7 +35,7 @@ const loginUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void
     // set refresh token into cookie
     const cookieOptions = {
         secure: config_1.default.env === 'production',
-        httpOnly: true,
+        httpOnly: false,
     };
     res.cookie('refreshToken', refreshToken, cookieOptions);
     (0, sendResponse_1.default)(res, {
@@ -52,7 +52,7 @@ const createMessAccount = (0, catchAsync_1.default)((req, res) => __awaiter(void
     // set refresh token into cookie
     const cookieOptions = {
         secure: config_1.default.env === 'production',
-        httpOnly: true,
+        httpOnly: false,
     };
     res.cookie('refreshToken', refreshToken, cookieOptions);
     (0, sendResponse_1.default)(res, {
@@ -68,7 +68,7 @@ const refreshToken = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
     // set refresh token into cookie
     const cookieOptions = {
         secure: config_1.default.env === 'production',
-        httpOnly: true,
+        httpOnly: false,
     };
     res.cookie('refreshToken', refreshToken, cookieOptions);
     (0, sendResponse_1.default)(res, {
