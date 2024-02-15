@@ -21,8 +21,8 @@ const createMess: RequestHandler = catchAsync(
 
     // set refresh token into cookie
     const cookieOptions = {
-      secure: false,
-      httpOnly: false,
+      secure: config.env === 'production',
+      httpOnly: true,
     };
 
     res.cookie('refreshToken', result?.refreshToken, cookieOptions);
