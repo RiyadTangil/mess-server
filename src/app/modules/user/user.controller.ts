@@ -25,7 +25,7 @@ const initialRoute: RequestHandler = catchAsync(
       statusCode: httpStatus.OK,
       success: true,
       message: 'user created successfully!',
-      data: 'Server is running',
+      data: 'Server is running now',
     });
   }
 );

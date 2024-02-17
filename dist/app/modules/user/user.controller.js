@@ -43,7 +43,7 @@ const initialRoute = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
         statusCode: http_status_1.default.OK,
         success: true,
         message: 'user created successfully!',
-        data: 'Server is running',
+        data: 'Server is running now',
     });
 }));
 const getAllUsers = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {

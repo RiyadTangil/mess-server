@@ -64,6 +64,10 @@ const updateUser = (id, payload) => __awaiter(void 0, void 0, void 0, function* 
     if (!isExist) {
         throw new ApiError_1.default(http_status_1.default.NOT_FOUND, 'User not found !');
     }
+    if (payload.password) {
+        const newHashedPassword = yield bcrypt_1.default.hash(payload.password, Number(config_1.default.bycrypt_salt_rounds));
+        payload.password = newHashedPassword;
+    }
     const result = yield user_model_1.User.findOneAndUpdate({ _id: id }, payload, {
         new: true,
     });

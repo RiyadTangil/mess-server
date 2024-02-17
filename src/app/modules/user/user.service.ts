@@ -76,6 +76,13 @@ const updateUser = async (
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found !');
   }
 
+  if (payload.password) {
+    const newHashedPassword = await bcrypt.hash(
+      payload.password,
+      Number(config.bycrypt_salt_rounds)
+    );
+    payload.password = newHashedPassword;
+  }
 
   const result = await User.findOneAndUpdate({ _id: id }, payload, {
     new: true,
