@@ -10,6 +10,7 @@ const user_route_1 = require("../modules/user/user.route");
 const mess__route_1 = require("../modules/mess/mess..route");
 const auth_route_1 = require("../modules/auth/auth.route");
 const meal_route_1 = require("../modules/meal/meal.route");
+const expenditure_route_1 = require("../modules/expenditure/expenditure.route");
 const router = express_1.default.Router();
 const moduleRoutes = [
     {
@@ -19,6 +20,10 @@ const moduleRoutes = [
     {
         path: '/mess',
         route: mess__route_1.MessRoutes,
+    },
+    {
+        path: '/expenditure',
+        route: expenditure_route_1.ExpenditureRoutes,
     },
     {
         path: '/meal',

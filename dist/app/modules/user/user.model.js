@@ -26,11 +26,6 @@ const depositWithdrawSchema = new mongoose_1.Schema({
     },
 });
 const userSchema = new mongoose_1.Schema({
-    // id: {
-    //   type: String,
-    //   required: true,
-    //   unique: true,
-    // },
     mess_id: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: 'Mess',
@@ -56,6 +51,12 @@ const userSchema = new mongoose_1.Schema({
         {
             type: mongoose_1.Schema.Types.ObjectId,
             ref: 'MealChoice',
+        },
+    ],
+    expenditures: [
+        {
+            type: mongoose_1.Schema.Types.ObjectId,
+            ref: 'Expenditure',
         },
     ],
     deposit: {

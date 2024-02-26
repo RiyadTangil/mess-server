@@ -18,6 +18,12 @@ exports.MessSchema = new mongoose_1.Schema({
             ref: 'User',
         },
     ],
+    expenditures: [
+        {
+            type: mongoose_1.Schema.Types.ObjectId,
+            ref: 'Expenditure',
+        },
+    ],
 }, {
     timestamps: true,
     toJSON: {
