@@ -19,6 +19,12 @@ export const MessSchema = new Schema<IMess, MessModel>(
         ref: 'User',
       },
     ],
+    expenditures: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Expenditure',
+      },
+    ],
   },
   {
     timestamps: true,

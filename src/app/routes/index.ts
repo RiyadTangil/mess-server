@@ -6,6 +6,7 @@ import { BasicRoute, UserRoutes } from '../modules/user/user.route';
 import { MessRoutes } from '../modules/mess/mess..route';
 import { AuthRoutes } from '../modules/auth/auth.route';
 import { MealRoutes } from '../modules/meal/meal.route';
+import { ExpenditureRoutes } from '../modules/expenditure/expenditure.route';
 
 const router = express.Router();
 
@@ -17,6 +18,10 @@ const moduleRoutes = [
   {
     path: '/mess',
     route: MessRoutes,
+  },
+  {
+    path: '/expenditure',
+    route: ExpenditureRoutes,
   },
   {
     path: '/meal',

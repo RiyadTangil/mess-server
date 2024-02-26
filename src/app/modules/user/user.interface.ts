@@ -3,6 +3,7 @@ import { Types } from 'mongoose';
 import { Model } from 'mongoose';
 import { IMess } from '../mess/mess..interface';
 import { IMealChoice } from '../meal/meal.interface';
+import { IExpenditure } from '../expenditure/expenditure.interface';
 
 export type IUser = {
   id: string;
@@ -12,6 +13,7 @@ export type IUser = {
   number: string;
   passwordChangedAt?: Date;
   meals: Types.ObjectId[] | IMealChoice[];
+  expenditures: Types.ObjectId[] | IExpenditure[];
   deposit: { amount: number; date: string }[];
   withdraw: { amount: number; date: string }[];
   mess_id?: Types.ObjectId | IMess;

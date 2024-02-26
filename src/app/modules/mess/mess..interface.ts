@@ -1,5 +1,6 @@
 import { Model, Types } from 'mongoose';
 import { IUser } from '../user/user.interface';
+import { IExpenditure } from '../expenditure/expenditure.interface';
 
 export type UserName = {
   firstName: string;
@@ -30,6 +31,7 @@ export type IMess = {
   password: string;
   id: string;
   users: Array<Types.ObjectId | IUser>;
+  expenditures: Array<Types.ObjectId | IExpenditure>;
   admin: Types.ObjectId | IUser; // reference _id
 };
 

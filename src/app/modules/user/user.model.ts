@@ -16,11 +16,6 @@ const depositWithdrawSchema = new Schema({
 
 const userSchema = new Schema<IUser>(
   {
-    // id: {
-    //   type: String,
-    //   required: true,
-    //   unique: true,
-    // },
     mess_id: {
       type: Schema.Types.ObjectId,
       ref: 'Mess',
@@ -47,6 +42,12 @@ const userSchema = new Schema<IUser>(
       {
         type: Schema.Types.ObjectId,
         ref: 'MealChoice',
+      },
+    ],
+    expenditures: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Expenditure',
       },
     ],
     deposit: {

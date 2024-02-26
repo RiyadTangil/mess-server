@@ -18,7 +18,7 @@ router.get('/:id', (0, auth_1.default)(user_1.ENUM_USER_ROLE.ADMIN), user_contro
 basicRouter.get('/', user_controller_1.UserController.initialRoute);
 router.get('/', user_controller_1.UserController.getAllUsers);
 router.delete('/:id', user_controller_1.UserController.deleteUser);
-router.patch('/:id', (0, validateRequest_1.default)(user_validation_1.UserValidation.createUserZodSchema), user_controller_1.UserController.updateUser);
+router.patch('/:id', user_controller_1.UserController.updateUser);
 exports.UserRoutes = router;
 exports.UserAuthRouters = authRouter;
 exports.BasicRoute = basicRouter;

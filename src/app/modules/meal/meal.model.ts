@@ -10,12 +10,12 @@ const MealChoiceSchema = new Schema<IMealChoice>(
     },
     date: { type: String, required: true },
     user: {
-      type: Schema.Types.ObjectId, // academicSemester --> _id
+      type: Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
     mess: {
-      type: Schema.Types.ObjectId, // academicSemester --> _id
+      type: Schema.Types.ObjectId,
       ref: 'Mess',
       required: true,
     },
