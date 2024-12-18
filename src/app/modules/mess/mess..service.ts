@@ -43,6 +43,7 @@ const createMess = async (
     const userInfo = {
       name: 'admin name',
       number,
+
       password: newHashedPassword,
       role: ENUM_USER_ROLE.ADMIN,
     };
@@ -53,6 +54,7 @@ const createMess = async (
     }
     const messInfo = {
       name,
+      meal_rate: 0,
       admin: createdUser._id,
       users: [createdUser._id],
     };
@@ -70,7 +72,13 @@ const createMess = async (
     });
 
     const { _id, role } = createdUser;
-    tokenInfo = { userId: _id, role, mess_id: createdMessAccount._id, name };
+    tokenInfo = {
+      userId: _id,
+      role,
+      mess_id: createdMessAccount._id,
+      name,
+      meal_rate: 0,
+    };
 
     await session.commitTransaction();
     await session.endSession();
@@ -174,34 +182,34 @@ const getSingleMess = async (id: string): Promise<IMess | null> => {
   return result;
 };
 
-// const updateCow = async (
-//   id: string,
-//   payload: Partial<ICow>
-// ): Promise<ICow | null> => {
-//   const isExist = await Mess.findOne({ _id: id });
+const updateMess = async (
+  id: string,
+  payload: Partial<IMess>
+): Promise<IMess | null> => {
+  const isExist = await Mess.findOne({ _id: id });
 
-//   if (!isExist) {
-//     throw new ApiError(httpStatus.NOT_FOUND, 'Mess not found !');
-//   }
+  if (!isExist) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Mess not found !');
+  }
 
-//   const { ...CowData } = payload;
+  const { ...CowData } = payload;
 
-//   const updatedCowData: Partial<ICow> = { ...CowData };
+  const updatedCowData: Partial<IMess> = { ...CowData };
 
-//   /* const name ={
-//     fisrtName: 'Mezba',  <----- update korar jnno
-//     middleName:'Abedin',
-//     lastName: 'Forhan'
-//   }
-// */
+  /* const name ={
+    fisrtName: 'Mezba',  <----- update korar jnno
+    middleName:'Abedin',
+    lastName: 'Forhan'
+  }
+*/
 
-//   // dynamically handling
+  // dynamically handling
 
-//   const result = await Mess.findOneAndUpdate({ _id: id }, updatedCowData, {
-//     new: true,
-//   });
-//   return result;
-// };
+  const result = await Mess.findOneAndUpdate({ _id: id }, updatedCowData, {
+    new: true,
+  });
+  return result;
+};
 
 // const deleteCow = async (id: string): Promise<ICow | null> => {
 //   const result = await Mess.findByIdAndDelete({ _id: id }).populate('user');
@@ -212,6 +220,6 @@ export const MessService = {
   createMess,
   // getAllCows,
   getSingleMess,
-  // updateCow,
+  updateMess,
   // deleteCow,
 };

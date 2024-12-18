@@ -8,6 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -51,6 +62,7 @@ const createMess = (payload) => __awaiter(void 0, void 0, void 0, function* () {
         }
         const messInfo = {
             name,
+            meal_rate: 0,
             admin: createdUser._id,
             users: [createdUser._id],
         };
@@ -63,7 +75,13 @@ const createMess = (payload) => __awaiter(void 0, void 0, void 0, function* () {
             mess_id: createdMessAccount._id,
         });
         const { _id, role } = createdUser;
-        tokenInfo = { userId: _id, role, mess_id: createdMessAccount._id, name };
+        tokenInfo = {
+            userId: _id,
+            role,
+            mess_id: createdMessAccount._id,
+            name,
+            meal_rate: 0,
+        };
         yield session.commitTransaction();
         yield session.endSession();
     }
@@ -146,28 +164,25 @@ const getSingleMess = (id) => __awaiter(void 0, void 0, void 0, function* () {
     });
     return result;
 });
-// const updateCow = async (
-//   id: string,
-//   payload: Partial<ICow>
-// ): Promise<ICow | null> => {
-//   const isExist = await Mess.findOne({ _id: id });
-//   if (!isExist) {
-//     throw new ApiError(httpStatus.NOT_FOUND, 'Mess not found !');
-//   }
-//   const { ...CowData } = payload;
-//   const updatedCowData: Partial<ICow> = { ...CowData };
-//   /* const name ={
-//     fisrtName: 'Mezba',  <----- update korar jnno
-//     middleName:'Abedin',
-//     lastName: 'Forhan'
-//   }
-// */
-//   // dynamically handling
-//   const result = await Mess.findOneAndUpdate({ _id: id }, updatedCowData, {
-//     new: true,
-//   });
-//   return result;
-// };
+const updateMess = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const isExist = yield mess__model_1.Mess.findOne({ _id: id });
+    if (!isExist) {
+        throw new ApiError_1.default(http_status_1.default.NOT_FOUND, 'Mess not found !');
+    }
+    const CowData = __rest(payload, []);
+    const updatedCowData = Object.assign({}, CowData);
+    /* const name ={
+      fisrtName: 'Mezba',  <----- update korar jnno
+      middleName:'Abedin',
+      lastName: 'Forhan'
+    }
+  */
+    // dynamically handling
+    const result = yield mess__model_1.Mess.findOneAndUpdate({ _id: id }, updatedCowData, {
+        new: true,
+    });
+    return result;
+});
 // const deleteCow = async (id: string): Promise<ICow | null> => {
 //   const result = await Mess.findByIdAndDelete({ _id: id }).populate('user');
 //   return result;
@@ -176,6 +191,6 @@ exports.MessService = {
     createMess,
     // getAllCows,
     getSingleMess,
-    // updateCow,
+    updateMess,
     // deleteCow,
 };

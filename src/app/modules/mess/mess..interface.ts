@@ -28,6 +28,7 @@ export type LocalGuardian = {
 export type IMess = {
   name: string;
   number: string;
+  meal_rate: number;
   password: string;
   id: string;
   users: Array<Types.ObjectId | IUser>;

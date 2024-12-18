@@ -7,6 +7,10 @@ export const MessSchema = new Schema<IMess, MessModel>(
       type: String,
       required: true,
     },
+    meal_rate: {
+      type: Number,
+      required: false,
+    },
 
     admin: {
       type: Schema.Types.ObjectId, // academicSemester --> _id

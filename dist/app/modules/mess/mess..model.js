@@ -7,6 +7,10 @@ exports.MessSchema = new mongoose_1.Schema({
         type: String,
         required: true,
     },
+    meal_rate: {
+        type: Number,
+        required: false,
+    },
     admin: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: 'User',

@@ -70,19 +70,19 @@ const getSingleMess = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-// const updateCow = catchAsync(async (req: Request, res: Response) => {
-//   const id = req.params.id;
-//   const updatedData = req.body;
+const updateMess = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const updatedData = req.body;
 
-//   const result = await CowService.updateCow(id, updatedData);
+  const result = await MessService.updateMess(id, updatedData);
 
-//   sendResponse<ICow>(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: 'Cow updated successfully !',
-//     data: result,
-//   });
-// });
+  sendResponse<IMess>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Mess updated successfully !',
+    data: result,
+  });
+});
 // const deleteCow = catchAsync(async (req: Request, res: Response) => {
 //   const id = req.params.id;
 
@@ -100,6 +100,7 @@ export const MessController = {
   createMess,
   // getAllCows,
   getSingleMess,
+  updateMess,
   // updateCow,
   // deleteCow,
 };

@@ -67,12 +67,14 @@ const getMealsByMessIdAndDate = async (
   return mess;
 };
 const getMealsByMessId = async (id: string): Promise<IMess | null> => {
-  const mess = await Mess.findOne({ _id: id }).populate({
-    path: 'users',
-    populate: {
-      path: 'meals',
-    },
-  });
+  const mess = await Mess.findOne({ _id: id })
+    .populate('expenditures')
+    .populate({
+      path: 'users',
+      populate: {
+        path: 'meals',
+      },
+    });
 
   return mess;
 };
@@ -111,7 +113,7 @@ export const MealService = {
   getMealsByUser,
   updateMeal,
   getMealsByMessId,
-  getMealsByMessIdAndDate
+  getMealsByMessIdAndDate,
   // getMealsByUserId,
   // getSingleMeal,
   // updateMeal,

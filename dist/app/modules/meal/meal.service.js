@@ -68,7 +68,9 @@ const getMealsByMessIdAndDate = (id, date) => __awaiter(void 0, void 0, void 0, 
     return mess;
 });
 const getMealsByMessId = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const mess = yield mess__model_1.Mess.findOne({ _id: id }).populate({
+    const mess = yield mess__model_1.Mess.findOne({ _id: id })
+        .populate('expenditures')
+        .populate({
         path: 'users',
         populate: {
             path: 'meals',
@@ -97,7 +99,7 @@ exports.MealService = {
     getMealsByUser,
     updateMeal,
     getMealsByMessId,
-    getMealsByMessIdAndDate
+    getMealsByMessIdAndDate,
     // getMealsByUserId,
     // getSingleMeal,
     // updateMeal,

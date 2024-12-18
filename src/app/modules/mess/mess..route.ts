@@ -22,11 +22,10 @@ router.get('/:id', MessController.getSingleMess);
 
 // router.delete('/:id', auth(ENUM_USER_ROLE.SELLER), CowController.deleteCow);
 
-// router.patch(
-//   '/:id',
-//   auth(ENUM_USER_ROLE.SELLER),
-//   validateRequest(MessValidation.updateCowZodSchema),
-//   CowController.updateCow
-// );
+router.patch(
+  '/:id',
+  validateRequest(MessValidation.UpdateMessZodSchema),
+  MessController.updateMess
+);
 
 export const MessRoutes = router;

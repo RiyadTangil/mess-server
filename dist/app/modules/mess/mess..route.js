@@ -21,10 +21,5 @@ router.get('/:id', mess_controller_1.MessController.getSingleMess);
 //   CowController.getAllCows
 // );
 // router.delete('/:id', auth(ENUM_USER_ROLE.SELLER), CowController.deleteCow);
-// router.patch(
-//   '/:id',
-//   auth(ENUM_USER_ROLE.SELLER),
-//   validateRequest(MessValidation.updateCowZodSchema),
-//   CowController.updateCow
-// );
+router.patch('/:id', (0, validateRequest_1.default)(mess__validation_1.MessValidation.UpdateMessZodSchema), mess_controller_1.MessController.updateMess);
 exports.MessRoutes = router;
